@@ -51,10 +51,10 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', width: '100%' }}>
-      <PageBar />
+      <PageBar mobile = {false}/>
 
       <Box style={{ width: '100%', overflow: 'hidden', height: '80vh', animation: `${fadeInFromRight} 2s forwards` }}>
-        <Carousel style={{ width: '100%', animation: `${fadeInFromRight} 2s forwards` }} />
+        <Carousel isMobile={false} style={{ width: '100%', animation: `${fadeInFromRight} 2s forwards` }} />
       </Box>
 
       <Box sx={{ backgroundColor: '#FFEBBC', width: '100%', padding: '5vh 0' }}>
@@ -158,10 +158,14 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
 function MobileView({ GoToOriginal, GoToLakeCity }) {
   return (
     <div style={{ padding: '10px' }}>
-      <PageBar />
+      {/* <PageBar /> */}
+     <div style={{ marginTop: '100px' }}>
+     <PageBar mobile = {true}/>
+     </div>
+      
 
       <Box style={{ width: '100%', overflow: 'hidden', height: '40vh', animation: `${fadeInFromRight} 2s forwards` }}>
-        <Carousel style={{ width: '100%', animation: `${fadeInFromRight} 2s forwards` }} />
+        <Carousel isMobile={true} style={{ width: '100%', animation: `${fadeInFromRight} 2s forwards` }} />
       </Box>
 
       <Box sx={{ backgroundColor: '#FFEBBC', width: '100%', padding: '2vh 0' }}>
@@ -178,16 +182,40 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
 
       <Divider orientation='horizontal' />
 
-      <Box sx={{ width: '100%', padding: '2vh 0', textAlign: 'center', borderRadius: '8px', backgroundColor: '#FFFFFF', marginBottom: '0px' }}>
-        <Box sx={{ width: '80%', marginLeft: '10%', marginTop: '10%', marginBottom: '10%', border: '2px solid #F7B60B', height: 'auto', padding: '5%' }}>
-          <Typography variant='h4' sx={{ fontFamily: 'Satisfy', color: '#F7B60B', marginBottom: '10%' }}>About Us</Typography>
-          <Typography variant='body1' sx={{ fontFamily: 'Caveat' }}>
-            We're an Ethiopian grocery store that caters to the needs of our local people. As an Ethiopian-owned business, we value our culture and stay true to it by continuing to serve our cuisine to Seattle.
-            <br /><br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra ligula id ligula dignissim, non ullamcorper dui aliquet. Donec nec mi id libero aliquet fermentum. Nulla facilisi. Quisque vitae nunc at quam tempor tempor. Aliquam erat volutpat. Vestibulum viverra libero a augue volutpat bibendum.
-          </Typography>
-        </Box>
-      </Box>
+      <Box
+  sx={{
+    width: '100%',
+    padding: '2vh 0',
+    textAlign: 'center',
+    borderRadius: '8px',
+    backgroundColor: '#FFFFFF',
+    marginBottom: '0px',
+    display: 'flex', // Add display flex
+    justifyContent: 'center', // Center horizontally
+    alignItems: 'center', // Center vertically
+    minHeight: '100vh' // Ensure it takes full height for vertical centering
+  }}
+>
+  <Box
+    sx={{
+      width: '80%',
+      border: '2px solid #F7B60B',
+      height: 'auto',
+      padding: '5%',
+      backgroundColor: '#FFFFFF' // Ensure background color is applied
+    }}
+  >
+    <Typography variant='h4' sx={{ fontFamily: 'Satisfy', color: '#F7B60B', marginBottom: '10%' }}>
+      About Us
+    </Typography>
+    <Typography variant='h4' sx={{ fontFamily: 'Caveat' }}>
+      We're an Ethiopian grocery store that caters to the needs of our local people. As an Ethiopian-owned business, we value our culture and stay true to it by continuing to serve our cuisine to Seattle.
+      <br /><br />
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra ligula id ligula dignissim, non ullamcorper dui aliquet. Donec nec mi id libero aliquet fermentum. Nulla facilisi. Quisque vitae nunc at quam tempor tempor. Aliquam erat volutpat. Vestibulum viverra libero a augue volutpat bibendum.
+    </Typography>
+  </Box>
+</Box>
+
 
       <Box id='cuisine'>
         <img src={tibs} alt='Tibs' style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
@@ -299,3 +327,4 @@ function App() {
 }
 
 export default App;
+
