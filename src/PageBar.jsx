@@ -72,7 +72,7 @@ export default function PageBar({ mobile }) {
                 marginTop: '1.5vh',
                 marginRight: '2vw',
                 borderWidth: '1.5px',
-                height: '100%',
+                height: '90%',
                 fontSize: '1vw',
                 color: '#F7B60B',
                 borderColor: '#FFCD22',
