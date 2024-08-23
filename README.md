@@ -1,1 +1,1 @@
-Hosted at [nazarethmarketseattle.com](nazarethmarketseattle.com)
+Hosted at (nazarethmarketseattle.com)[https://nazarethmarketseattle.com/]
