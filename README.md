@@ -1,1 +1,1 @@
-Hosted at (nazarethmarketseattle.com)[https://nazarethmarketseattle.com/]
+Hosted at [OpenAI](https://www.openai.com)
