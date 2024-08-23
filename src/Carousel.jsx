@@ -17,7 +17,7 @@ const slideInFromRight = keyframes`
   }
 `;
 
-function Fade() {
+function Carousel({isMobile}) {
   const settings = {
     dots: true,
     fade: true,
@@ -38,7 +38,29 @@ function Fade() {
 
   return (
     <div className="slider-container">
-      <Slider {...settings}>
+      {isMobile ? (
+        <Slider {...settings}>
+        <div style={{ ...slideStyle, fontFamily: "Satisfy",  animation: `${slideInFromRight} 2s forwards` }}>
+          <img src={img} style={{ width: "100%", height: "auto",  animation: `${slideInFromRight} 2s forwards` }} alt="Slide 1" />
+          <div className="banner" style={{ position: 'absolute',  animation: `${slideInFromRight} 2s forwards`, top: '45%', left: '30%', borderRadius: "60px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '2vh' }}>
+            <p style={{ fontFamily: "Caveat", borderRadius: "40px" }}>Visit our new and improved location</p>
+          </div>
+        </div>
+        <div style={slideStyle}>
+          <img src={img2} style={{ width: "100%"}} alt="Slide 2" />
+          <div className="banner" style={{ position: 'absolute', top: '55%', left: '30%', borderRadius: "50px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '2vh' }}>
+            <p style={{ fontFamily: "Caveat", borderRadius: "40px" }}>5418 Martin Luther King Jr Way S, Seattle <PlaceIcon sx={{ fontSize: "40px" }} /></p>
+          </div>
+        </div>
+        <div style={slideStyle}>
+          <img src={img3} style={{ width: "100%" }} alt="Slide 3" />
+          <div className="banner" style={{ position: 'absolute', top: '45%', left: '30%', borderRadius: "60px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '2vh' }}>
+            <p style={{ fontFamily: "Caveat" }}>Fresh meat Thursdays and Saturdays!</p>
+          </div>
+        </div>
+      </Slider>
+      ) : (
+        <Slider {...settings}>
         <div style={{ ...slideStyle, fontFamily: "Satisfy",  animation: `${slideInFromRight} 2s forwards` }}>
           <img src={img} style={{ width: "100%", height: "auto",  animation: `${slideInFromRight} 2s forwards` }} alt="Slide 1" />
           <div className="banner" style={{ position: 'absolute',  animation: `${slideInFromRight} 2s forwards`, top: '45%', left: '30%', borderRadius: "60px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '4vh' }}>
@@ -58,8 +80,9 @@ function Fade() {
           </div>
         </div>
       </Slider>
+      )}
     </div>
   );
 }
 
-export default Fade;
+export default Carousel;
