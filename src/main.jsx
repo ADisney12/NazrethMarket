@@ -9,6 +9,7 @@ import {
 import App from "./App";
 import OriginalLocation from "./OriginalLocation.jsx";
 import LakeCityLocation from "./lakeCityLocation";
+import Menu from "./menu";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "Martin Luther King Way",
     element: <OriginalLocation/>
+  },
+  {
+    path: "menu",
+    element: <Menu/>
   }
 ]);
 

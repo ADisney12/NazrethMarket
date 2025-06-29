@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Divider from '@mui/material/Divider';
 import { Link } from 'react-router-dom';
+import logo from "./Photos/NazarethMarketlogo.png";
 
 export default function PageBar({ mobile }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -21,11 +22,11 @@ export default function PageBar({ mobile }) {
 
   const drawerContent = (
     <List>
-      {['Home', 'Locations', 'Menu', 'Contact Us'].map((text) => (
+      {['Home', 'Menu'].map((text) => (
         <ListItem
           button
           component={Link}
-          to={`/${text.toLowerCase().replace(' ', '')}`}
+          to={text === 'Home' ? '/' : `/${text.toLowerCase().replace(' ', '')}`}
           key={text}
           onClick={toggleDrawer(false)}
         >
@@ -40,107 +41,68 @@ export default function PageBar({ mobile }) {
     <AppBar
       variant="outlined"
       position="fixed"
-      sx={{ color: 'black', boxShadow: '4px', height: '10%', backgroundColor: '#FFFFFF', width: '100vw' }}
+      sx={{ color: 'black', boxShadow: '4px', height: mobile ? '5%' : '10%', backgroundColor: 'rgba(255, 255, 255, 0.6)', width: '100vw', borderColor: "yellow" }}
     >
       <Toolbar>
         {mobile && (
             <div style={{ width: "100%" }}>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginTop: '1.5vh', fontSize: '2vw' }}>
-              Nazareth Market
-            </Typography>
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-              sx={{ marginLeft: '90%' }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <img src={logo} alt="Nazareth Market Logo" style={{ height: mobile ? '50px' : '100px', marginTop: '0vh' }} />
+              <IconButton
+                edge="end"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon sx={{ fontSize: '2rem', color: '#F7B60B' }} />
+              </IconButton>
+            </div>
           </div>
         )}
        
         {!mobile && (
           <>
-           <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginTop: '1.5vh', fontSize: '2vw' }}>
-          Nazareth Market
-        </Typography>
-            <Button
-              variant="outlined"
-              color="primary"
-              sx={{
-                marginTop: '1.5vh',
-                marginRight: '2vw',
-                borderWidth: '1.5px',
-                height: '100%',
-                fontSize: '1vw',
-                color: '#F7B60B',
-                borderColor: '#FFCD22',
-                backgroundColor: 'white',
-                '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
-              }}
-              component={Link}
-              to="/"
-            >
-              Home
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              sx={{
-                marginTop: '1.5vh',
-                marginRight: '2vw',
-                borderWidth: '1.5px',
-                height: '100%',
-                fontSize: '1vw',
-                color: '#F7B60B',
-                borderColor: '#FFCD22',
-                backgroundColor: 'white',
-                '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
-              }}
-              component={Link}
-              to="/locations"
-            >
-              Locations
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              sx={{
-                marginRight: '2vw',
-                borderWidth: '1.5px',
-                marginTop: '1.5vh',
-                height: '100%',
-                fontSize: '1vw',
-                color: '#F7B60B',
-                borderColor: '#FFCD22',
-                backgroundColor: 'white',
-                '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
-              }}
-              component={Link}
-              to="/menu"
-            >
-              Menu
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              sx={{
-                marginRight: '2vw',
-                marginTop: '1.5vh',
-                height: '100%',
-                fontSize: '1vw',
-                borderWidth: '1.5px',
-                color: '#F7B60B',
-                borderColor: '#FFCD22',
-                backgroundColor: 'white',
-                '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
-              }}
-              component={Link}
-              to="/contact"
-            >
-              Contact Us
-            </Button>
+          <img src={logo} alt="Nazareth Market Logo" style={{ height: '100px', marginTop: '1.5vh', width: 'auto' }} />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+              <Button
+                variant="outlined"
+                color="primary"
+                sx={{
+                  marginTop: '1.5vh',
+                  marginRight: '2vw',
+                  borderWidth: '1.5px',
+                  height: '100%',
+                  fontSize: { xs: '1.2vw', sm: '1.5vw' }, // Responsive font size
+                  color: '#F7B60B',
+                  borderColor: '#FFCD22',
+                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                  '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
+                }}
+                component={Link}
+                to="/"
+              >
+                Home
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                sx={{
+                  marginRight: '2vw',
+                  borderWidth: '1.5px',
+                  marginTop: '1.5vh',
+                  height: '100%',
+                  fontSize: { xs: '1.2vw', sm: '1.5vw' }, // Responsive font size
+                  color: '#F7B60B',
+                  borderColor: '#FFCD22',
+                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                  '&:hover': { backgroundColor: '#FFCD22', color: 'white' },
+                }}
+                component={Link}
+                to="/menu"
+              >
+                Menu
+              </Button>
+            </div>
           </>
         )}
       </Toolbar>

@@ -48,8 +48,8 @@ function Carousel({isMobile}) {
         </div>
         <div style={slideStyle}>
           <img src={img2} style={{ width: "100%"}} alt="Slide 2" />
-          <div className="banner" style={{ position: 'absolute', top: '55%', left: '30%', borderRadius: "50px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '2vh' }}>
-            <p style={{ fontFamily: "Caveat", borderRadius: "40px" }}>5418 Martin Luther King Jr Way S, Seattle <PlaceIcon sx={{ fontSize: "40px" }} /></p>
+          <div className="banner" style={{ position: 'absolute', top: '55%', left: '30%', borderRadius: "50px", transform: 'translate(-45%, -10%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '2vh' }}>
+            <p style={{ fontFamily: "Caveat", borderRadius: "40px" }}>5418 Martin Luther King Jr Way S, Seattle </p>
           </div>
         </div>
         <div style={slideStyle}>
@@ -69,7 +69,7 @@ function Carousel({isMobile}) {
         </div>
         <div style={slideStyle}>
           <img src={img2} style={{ width: "100%", marginTop: "-20vh" }} alt="Slide 2" />
-          <div className="banner" style={{ position: 'absolute', top: '55%', left: '30%', borderRadius: "50px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '4vh' }}>
+          <div className="banner" style={{ position: 'absolute', top: '55%', left: '30%', borderRadius: "50px", transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.8)', color: 'black', padding: '20px', fontSize: '3vh' }}>
             <p style={{ fontFamily: "Caveat", borderRadius: "40px" }}>5418 Martin Luther King Jr Way S, Seattle <PlaceIcon sx={{ fontSize: "40px" }} /></p>
           </div>
         </div>
