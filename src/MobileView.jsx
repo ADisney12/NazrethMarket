@@ -40,51 +40,116 @@ const flagWave = keyframes`
 function MobileView({ GoToOriginal, GoToLakeCity }) {
   const [isVisible, setIsVisible] = useState(false);
   const [aboutVisible, setAboutVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [expansionVisible, setExpansionVisible] = useState(false);
+  const [ingredientsVisible, setIngredientsVisible] = useState(false);
+  const [locationsVisible, setLocationsVisible] = useState(false);
 
   useEffect(() => {
-    const cuisineSection = document.getElementById('cuisine');
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    };
 
-    const observer = new IntersectionObserver(
+    // Hero section observer
+    const heroObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setHeroVisible(true);
         }
       },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-      }
+      observerOptions
     );
 
-    if (cuisineSection) {
-      observer.observe(cuisineSection);
+    const heroSection = document.getElementById('hero-section');
+    if (heroSection) {
+      heroObserver.observe(heroSection);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    // Expansion section observer
+    const expansionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setExpansionVisible(true);
+        }
+      },
+      observerOptions
+    );
 
-  useEffect(() => {
-    const aboutSection = document.getElementById('about');
+    const expansionSection = document.getElementById('expansion-section');
+    if (expansionSection) {
+      expansionObserver.observe(expansionSection);
+    }
 
-    const observer = new IntersectionObserver(
+    // About section observer
+    const aboutObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setAboutVisible(true);
         }
       },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-      }
+      observerOptions
     );
 
+    const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      observer.observe(aboutSection);
+      aboutObserver.observe(aboutSection);
     }
 
-    return () => observer.disconnect();
+    // Ingredients section observer
+    const ingredientsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIngredientsVisible(true);
+        }
+      },
+      observerOptions
+    );
+
+    const ingredientsSection = document.getElementById('ingredients-section');
+    if (ingredientsSection) {
+      ingredientsObserver.observe(ingredientsSection);
+    }
+
+    // Cuisine section observer
+    const cuisineObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      observerOptions
+    );
+
+    const cuisineSection = document.getElementById('cuisine');
+    if (cuisineSection) {
+      cuisineObserver.observe(cuisineSection);
+    }
+
+    // Locations section observer
+    const locationsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLocationsVisible(true);
+        }
+      },
+      observerOptions
+    );
+
+    const locationsSection = document.getElementById('locations-section');
+    if (locationsSection) {
+      locationsObserver.observe(locationsSection);
+    }
+
+    return () => {
+      heroObserver.disconnect();
+      expansionObserver.disconnect();
+      aboutObserver.disconnect();
+      ingredientsObserver.disconnect();
+      cuisineObserver.disconnect();
+      locationsObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -94,14 +159,17 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
       </div>
 
       {/* Hero Section */}
-      <Box style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden', animation: `${slideUp} 2s forwards` }}>
+      <Box 
+        id="hero-section"
+        style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}
+      >
         <Box 
           sx={{
             position: 'relative',
             width: '100%',
             height: '100%',
             overflow: 'hidden',
-            animation: `${slideUp} 2s forwards`,
+            animation: heroVisible ? `${slideUp} 2s forwards` : 'none',
           }}
         >
           <Box component="img" 
@@ -144,8 +212,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             border: '2px solid #F7B60B',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
             zIndex: 2,
-            animation: `${slideUp} 1.5s ease-out 0.5s forwards`,
-            opacity: 0
+            animation: heroVisible ? `${slideUp} 1.5s ease-out 0.5s forwards` : 'none',
+            opacity: heroVisible ? 1 : 0
           }}
         >
           Nazreth Market
@@ -166,8 +234,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             fontSize: '1rem',
             textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)',
             zIndex: 2,
-            animation: `${slideUp} 1.5s ease-out 1s forwards`,
-            opacity: 0
+            animation: heroVisible ? `${slideUp} 1.5s ease-out 1s forwards` : 'none',
+            opacity: heroVisible ? 1 : 0
           }}
         >
           Fresh Siga and 100% teff Injera
@@ -183,17 +251,26 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             height: '30px',
             background: 'linear-gradient(to bottom, #009A49 33%, #FEDD00 33% 66%, #EF3340 66%)',
             borderRadius: '4px',
-            animation: `${flagWave} 3s ease-in-out infinite 1.5s`,
             zIndex: 3,
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
-            opacity: 0,
-            animation: `${slideUp} 1s ease-out 1.5s forwards, ${flagWave} 3s ease-in-out infinite 2.5s`
+            opacity: heroVisible ? 1 : 0,
+            animation: heroVisible ? `${slideUp} 1s ease-out 1.5s forwards, ${flagWave} 3s ease-in-out infinite 2.5s` : 'none'
           }}
         />
       </Box>
 
       {/* Expansion Announcement */}
-      <Box sx={{ backgroundColor: '#FFEBBC', width: '100%', padding: '5vh 0', animation: `${slideUp} 1s ease-out`, marginBottom: '3vh' }}>
+      {/* <Box 
+        id="expansion-section"
+        sx={{ 
+          backgroundColor: '#FFEBBC', 
+          width: '100%', 
+          padding: '5vh 0', 
+          marginBottom: '3vh',
+          animation: expansionVisible ? `${slideUp} 1s ease-out` : 'none',
+          opacity: expansionVisible ? 1 : 0
+        }}
+      >
         <Typography variant='h4' sx={{ textAlign: 'center', fontSize: '1.8rem', fontFamily: 'Satisfy', paddingBottom: '2vh', color: '#F7B60B' }}>
           We're Expanding!
         </Typography>
@@ -219,7 +296,7 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
         >
           Learn More
         </Button>
-      </Box>
+      </Box> */}
 
       {/* Decorative Divider */}
       <Box sx={{ 
@@ -280,7 +357,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
           justifyContent: 'center',
           alignItems: 'center',
           minHeight: 'auto',
-          animation: aboutVisible ? `${slideUp} 1s ease-out` : 'none'
+          animation: aboutVisible ? `${slideUp} 1s ease-out` : 'none',
+          opacity: aboutVisible ? 1 : 0
         }}
       >
         <Box
@@ -335,14 +413,19 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
       </Box>
 
       {/* Fresh Ingredients Section */}
-      <Box sx={{ 
-        width: '100%', 
-        padding: '6vh 0', 
-        position: 'relative', 
-        marginBottom: '4vh',
-        overflow: 'hidden',
-        minHeight: '60vh'
-      }}>
+      <Box 
+        id="ingredients-section"
+        sx={{ 
+          width: '100%', 
+          padding: '6vh 0', 
+          position: 'relative', 
+          marginBottom: '4vh',
+          overflow: 'hidden',
+          minHeight: '60vh',
+          animation: ingredientsVisible ? `${slideUp} 1s ease-out` : 'none',
+          opacity: ingredientsVisible ? 1 : 0
+        }}
+      >
         <Box 
           component="img"
           src={aisle} 
@@ -416,7 +499,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
           gap: '8px',
           padding: '10px',
           animation: isVisible ? `${zoomIn} 1s ease-out` : 'none',
-          width: '100%'
+          width: '100%',
+          opacity: isVisible ? 1 : 0
         }}>
           <img src={tibs} alt='Tibs' style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
           <img src={siga1} alt='Siga1' style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
@@ -486,7 +570,18 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
       </Box>
 
       {/* Locations Section */}
-      <Box sx={{ backgroundColor: '#FEEDD2', width: '100%', padding: '6vh 0', textAlign: 'center', marginBottom: '4vh' }}>
+      <Box 
+        id="locations-section"
+        sx={{ 
+          backgroundColor: '#FEEDD2', 
+          width: '100%', 
+          padding: '6vh 0', 
+          textAlign: 'center', 
+          marginBottom: '4vh',
+          animation: locationsVisible ? `${slideUp} 1s ease-out` : 'none',
+          opacity: locationsVisible ? 1 : 0
+        }}
+      >
         <Typography variant='h4' sx={{ fontFamily: 'Satisfy', marginBottom: '5vh', color: '#F7B60B', fontSize: '2rem' }}>
           Our Locations
         </Typography>
