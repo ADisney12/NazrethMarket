@@ -23,7 +23,7 @@ const fadeInFromRight = keyframes`
 
 const slideUp = keyframes`
   from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(10px); opacity: 1; }
 `;
 
 const zoomIn = keyframes`
@@ -155,7 +155,7 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
   return (
     <div style={{ padding: '0px', overflow: 'hidden' }}>
       <div style={{ marginTop: '60px' }}>
-        <PageBar mobile={true} />
+        <PageBar mobile={true} style={{ height: '100px' }}/>
       </div>
 
       {/* Hero Section */}
@@ -200,20 +200,23 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             fontFamily: "Lobster",
             position: 'absolute',
             top: '50%',
-            left: '50%',
+            left: '40%',
             transform: 'translate(-50%, -50%)',
             color: 'rgb(255, 255, 255)',
             textAlign: 'center',
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
             padding: '15px',
             borderRadius: '10px',
-            fontSize: '2.5rem',
+            fontSize: '2rem',
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
             border: '2px solid #F7B60B',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
             zIndex: 2,
             animation: heroVisible ? `${slideUp} 1.5s ease-out 0.5s forwards` : 'none',
-            opacity: heroVisible ? 1 : 0
+            opacity: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           Nazreth Market
@@ -226,8 +229,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             fontFamily: 'Courier New',
             fontWeight: 'bold',
             position: 'absolute',
-            top: '65%',
-            left: '50%',
+            top: '60%',
+            left: '35%',
             transform: 'translate(-50%, -50%)',
             color: 'rgb(255, 255, 255)',
             textAlign: 'center',
@@ -235,7 +238,10 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)',
             zIndex: 2,
             animation: heroVisible ? `${slideUp} 1.5s ease-out 1s forwards` : 'none',
-            opacity: heroVisible ? 1 : 0
+            opacity: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           Fresh Siga and 100% teff Injera
@@ -253,7 +259,7 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             borderRadius: '4px',
             zIndex: 3,
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
-            opacity: heroVisible ? 1 : 0,
+            opacity: 0,
             animation: heroVisible ? `${slideUp} 1s ease-out 1.5s forwards, ${flagWave} 3s ease-in-out infinite 2.5s` : 'none'
           }}
         />

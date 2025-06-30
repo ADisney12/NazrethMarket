@@ -41,7 +41,7 @@ export default function PageBar({ mobile }) {
     <AppBar
       variant="outlined"
       position="fixed"
-      sx={{ color: 'black', boxShadow: '4px', height: mobile ? '5%' : '10%', backgroundColor: 'rgba(255, 255, 255, 0.6)', width: '100vw', borderColor: "yellow" }}
+      sx={{ color: 'black', boxShadow: '4px', height: mobile ? '7%' : '10%', backgroundColor: 'rgba(255, 255, 255, 0.6)', width: '100vw', borderColor: "yellow" }}
     >
       <Toolbar>
         {mobile && (
