@@ -23,7 +23,7 @@ const fadeInFromRight = keyframes`
 
 const slideUp = keyframes`
   from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(10px); opacity: 1; }
+  to { transform: translateY(0px); opacity: 1; }
 `;
 
 const zoomIn = keyframes`
@@ -154,8 +154,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
 
   return (
     <div style={{ padding: '0px', overflow: 'hidden' }}>
-      <div style={{ marginTop: '60px' }}>
-        <PageBar mobile={true} style={{ height: '100px' }}/>
+      <div style={{ marginTop: '0px' }}>
+        <PageBar mobile={true} style={{ height: '80px' }}/>
       </div>
 
       {/* Hero Section */}
@@ -199,8 +199,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
           sx={{
             fontFamily: "Lobster",
             position: 'absolute',
-            top: '50%',
-            left: '40%',
+            top: '60%',
+            left: '25%',
             transform: 'translate(-50%, -50%)',
             color: 'rgb(255, 255, 255)',
             textAlign: 'center',
@@ -229,8 +229,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             fontFamily: 'Courier New',
             fontWeight: 'bold',
             position: 'absolute',
-            top: '60%',
-            left: '35%',
+            top: '70%',
+            left: '20%',
             transform: 'translate(-50%, -50%)',
             color: 'rgb(255, 255, 255)',
             textAlign: 'center',
@@ -251,8 +251,8 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
         <Box
           sx={{
             position: 'absolute',
-            top: '20px',
-            right: '20px',
+            top: '10px',
+            left:"10%",
             width: '40px',
             height: '30px',
             background: 'linear-gradient(to bottom, #009A49 33%, #FEDD00 33% 66%, #EF3340 66%)',
@@ -729,12 +729,22 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
               color: "white",
               fontFamily: "Caveat",
               textAlign: "center",
-              fontSize: "1.1rem"
+              fontSize: "1.5rem"
             }}
           >
-            Phone: (206) 555-0123
+            North Seattle Location: (206) 693-3189
           </Typography>
           <Typography 
+            sx={{ 
+              color: "white",
+              fontFamily: "Caveat",
+              textAlign: "center",
+              fontSize: "1.5rem"
+            }}
+          >
+            South Seattle Location: (206) 725-9161
+          </Typography>
+          {/* <Typography 
             sx={{ 
               color: "white",
               fontFamily: "Caveat",
@@ -743,7 +753,7 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
             }}
           >
             Email: info@nazarethmarket.com
-          </Typography>
+          </Typography> */}
         </Box>
 
         <Typography 

@@ -524,15 +524,26 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
                   Contact Us
                 </Typography>
                 <Typography 
-                 variant="h5" 
-                  sx={{ 
-                    color: "white",
-                    fontFamily: "Caveat"
-                  }}
-                >
-                  Phone: (206) 555-0123
-                </Typography>
-                <Typography 
+                sx={{ 
+                  color: "white",
+                  fontFamily: "Caveat",
+                  textAlign: "center",
+                  fontSize: "1.1rem"
+                }}
+              >
+                North Seattle Location: (206) 693-3189
+              </Typography>
+              <Typography 
+                sx={{ 
+                  color: "white",
+                  fontFamily: "Caveat",
+                  textAlign: "center",
+                  fontSize: "1.1rem"
+                }}
+              >
+                South Seattle Location: (206) 725-9161
+              </Typography>
+                {/* <Typography 
                   variant="h5" 
                   sx={{ 
                     color: "white",
@@ -540,7 +551,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
                   }}
                 >
                   Email: info@nazarethmarket.com
-                </Typography>
+                </Typography> */}
               </Box>
             </Box>
           </Box>
