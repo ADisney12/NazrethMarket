@@ -255,31 +255,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
         </Box>
 
         {/* Expansion Announcement Section */}
-        <Box sx={{ backgroundColor: '#FFEBBC', width: '100%', padding: '5vh 0', textAlign: 'center' }}>
-          <Typography variant='h2' sx={{ fontFamily: 'Satisfy', fontSize: '3rem', marginBottom: '2vh', color: '#F7B60B' }}>
-            We're Expanding!
-          </Typography>
-          <Typography variant='h4' sx={{ fontFamily: 'Caveat', fontSize: '1.8rem', marginBottom: '3vh' }}>
-            A new Nazareth Market location has opened
-          </Typography>
-          <Button 
-            variant='outlined' 
-            onClick={GoToLakeCity} 
-            sx={{ 
-              fontSize: '1.2rem',
-              padding: '12px 30px',
-              borderColor: '#F7B60B',
-              color: '#F7B60B',
-              backgroundColor: 'white',
-              '&:hover': {
-                backgroundColor: '#F7B60B',
-                color: 'white'
-              }
-            }}
-          >
-            Learn More
-          </Button>
-        </Box>
+   
 
         <Divider orientation='horizontal' />
 

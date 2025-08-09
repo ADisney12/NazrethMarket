@@ -197,6 +197,7 @@ function MobileView({ GoToOriginal, GoToLakeCity }) {
         <Typography 
           variant="h2" 
           sx={{
+            width:"54%",
             textAlign:"center",
             fontFamily: "Lobster",
             position: 'absolute',
