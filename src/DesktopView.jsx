@@ -58,9 +58,20 @@ const floatUpDown = keyframes`
   50% { transform: translateY(-15px);}
 `;
 
+// Pop-in with slight overshoot
+const popIn = keyframes`
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  60% { opacity: 1; transform: scale(1.05) translateY(0); }
+  100% { opacity: 1; transform: scale(1); }
+`;
+
 function DesktopView({ GoToOriginal, GoToLakeCity }) {
   const [isVisible, setIsVisible] = useState(false);
   const [aboutVisible, setAboutVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [ingredientsVisible, setIngredientsVisible] = useState(false);
+  const [locationsVisible, setLocationsVisible] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   
 
   useEffect(() => {
@@ -109,6 +120,52 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
     return () => observer.disconnect();
   }, []);
 
+  // Trigger hero text animation on mount
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
+
+  // Observe sections that previously lacked intro animations
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    };
+
+    const ingredientsSection = document.getElementById('ingredients-desktop');
+    const locationsSection = document.getElementById('locations-desktop');
+    const footerSection = document.getElementById('footer-desktop');
+
+    const ingredientsObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIngredientsVisible(true);
+      }
+    }, observerOptions);
+
+    const locationsObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setLocationsVisible(true);
+      }
+    }, observerOptions);
+
+    const footerObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setFooterVisible(true);
+      }
+    }, observerOptions);
+
+    if (ingredientsSection) ingredientsObserver.observe(ingredientsSection);
+    if (locationsSection) locationsObserver.observe(locationsSection);
+    if (footerSection) footerObserver.observe(footerSection);
+
+    return () => {
+      ingredientsObserver.disconnect();
+      locationsObserver.disconnect();
+      footerObserver.disconnect();
+    };
+  }, []);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', width: '100%' }}>
       <Box style={{ position: 'relative' }}>
@@ -154,46 +211,55 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
               />
             </Box>
           </Box>
-          <Typography 
-            variant="h1" 
+          <Box
             sx={{
-              fontFamily: "Lobster",
               position: 'absolute',
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              color: 'rgb(255, 255, 255)',
-              textAlign: 'center',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark semi-transparent background for contrast
-              padding: '20px',
-              borderRadius: '12px',
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', lg: '9rem' },
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Adding text shadow for depth
-              border: '2px solid #F7B60B', // Adding a border for emphasis
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)' // Adding shadow for a floating effect
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: { xs: '8px', sm: '10px', md: '12px' },
+              zIndex: 2,
             }}
           >
-            Nazreth Market
-          </Typography>
-          <Typography 
-            variant="h2" 
-            sx={{
-              fontFamily: 'Courier New',
-              fontWeight: 'bold',
-              position: 'absolute',
-              top: '60%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: 'rgb(255, 255, 255)',
-              textAlign: 'center',
-        
-              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' },
-              textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)', // Adding text shadow for depth
-              boxShadow: ' 20px 20px 20px rgba(0, 0, 0, 0.5)' // Adding shadow for a floating effect
-            }}
-          >
-            Fresh Siga and 100% teff Injera
-          </Typography>
+            <Typography 
+              variant="h1" 
+              sx={{
+                fontFamily: "Lobster",
+                color: 'rgb(255, 255, 255)',
+                textAlign: 'center',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark semi-transparent background for contrast
+                padding: '20px',
+                borderRadius: '12px',
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', lg: '9rem' },
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Adding text shadow for depth
+                border: '2px solid #F7B60B', // Adding a border for emphasis
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)', // Adding shadow for a floating effect
+                animation: heroVisible ? `${slideUp} 1.2s ease-out 0.2s forwards` : 'none',
+                opacity: 0
+              }}
+            >
+              Nazreth Market
+            </Typography>
+            <Typography 
+              variant="h2" 
+              sx={{
+                fontFamily: 'Courier New',
+                fontWeight: 'bold',
+                color: 'rgb(255, 255, 255)',
+                textAlign: 'center',
+                fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' },
+                textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)', // Adding text shadow for depth
+                boxShadow: ' 20px 20px 20px rgba(0, 0, 0, 0.5)', // Adding shadow for a floating effect
+                animation: heroVisible ? `${slideUp} 1s ease-out 0.5s forwards` : 'none',
+                opacity: 0
+              }}
+            >
+              Fresh Siga and 100% teff Injera
+            </Typography>
+          </Box>
             {/* Cool Graphics: Ethiopian flag ribbon (always visible) */}
             <Box
               sx={{
@@ -293,7 +359,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
         </Box>
 
         <Divider orientation='horizontal' />
-        <Box sx={{ 
+        <Box id="ingredients-desktop" sx={{ 
         width: '100%', 
         padding: '5vh 0', 
         display: 'flex', 
@@ -301,7 +367,9 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
         position: 'relative', 
         marginBottom: '0px',
         overflow: 'hidden',
-        height: '100vh' // Set full viewport height
+        height: '100vh', // Set full viewport height
+        animation: ingredientsVisible ? `${slideUp} 1s ease-out` : 'none',
+        opacity: ingredientsVisible ? 1 : 0
       }}>
         <img src={aisle} alt='Aisle at Nazreth Market' style={{ 
           position: 'absolute',
@@ -345,14 +413,19 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
         </svg>
       </Box>
       
-        <Box id='cuisine'>
+        <Box id='cuisine' sx={{ animation: isVisible ? `${slideUp} 1s ease-out` : 'none', opacity: isVisible ? 1 : 0 }}>
           <img
             src={tibs}
             alt="Tibs"
             style={{
               opacity: isVisible ? 1 : 0,
-              transition: 'opacity 1s ease-in-out',
-              animation: `${floatUpDown} 7s ease-in-out infinite`,
+              transition: 'opacity 0.2s ease-out',
+              animation: isVisible 
+                ? `${popIn} 0.6s ease-out 0s forwards, ${floatUpDown} 7s ease-in-out infinite 0.8s`
+                : 'none',
+              border: '3px solid #F7B60B',
+              borderRadius: '12px',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
             }}
           />
           <img 
@@ -360,8 +433,13 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
             alt='Siga1' 
             style={{ 
               opacity: isVisible ? 1 : 0, 
-              transition: 'opacity 1s ease-in-out',
-              animation: `${swirlRotate} 10s linear infinite`
+              transition: 'opacity 0.2s ease-out',
+              animation: isVisible 
+                ? `${popIn} 0.6s ease-out 0.1s forwards, ${swirlRotate} 10s linear infinite 0.9s`
+                : 'none',
+              border: '3px solid #F7B60B',
+              borderRadius: '12px',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
             }} 
           />
           <img 
@@ -369,8 +447,13 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
             alt='Siga2' 
             style={{ 
               opacity: isVisible ? 1 : 0, 
-              transition: 'opacity 1s ease-in-out',
-              animation: `${sparkleTwinkle} 5s ease-in-out infinite`
+              transition: 'opacity 0.2s ease-out',
+              animation: isVisible 
+                ? `${popIn} 0.6s ease-out 0.2s forwards, ${sparkleTwinkle} 5s ease-in-out infinite 1s`
+                : 'none',
+              border: '3px solid #F7B60B',
+              borderRadius: '12px',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
             }} 
           />
           <img 
@@ -378,11 +461,22 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
             alt='Siga3' 
             style={{ 
               opacity: isVisible ? 1 : 0, 
-              transition: 'opacity 1s ease-in-out',
-              animation: `${fadeInFromRight} 8s ease-in-out infinite`
+              transition: 'opacity 0.2s ease-out',
+              animation: isVisible 
+                ? `${popIn} 0.6s ease-out 0.3s forwards, ${fadeInFromRight} 8s ease-in-out infinite 1.1s`
+                : 'none',
+              border: '3px solid #F7B60B',
+              borderRadius: '12px',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
             }} 
           />
-          <div className='center-text'>
+          <div 
+            className='center-text'
+            style={{
+              opacity: isVisible ? 1 : 0,
+              animation: isVisible ? `${popIn} 0.6s ease-out 0.4s forwards` : 'none'
+            }}
+          >
             <Typography variant='h1' sx={{ fontFamily: 'Satisfy',color:"#F7B60B" }}>Our Cuisine</Typography>
             <Typography variant='h4' sx={{ fontFamily: 'Caveat' }}>
               Nazreth Market is home to some of the best Ethiopian food in Seattle. We serve fresh kitfo and tasty Tibs in an environment that reminds you of home.
@@ -392,7 +486,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
 
         <Divider orientation='horizontal' borderColor='black' />
 
-        <Box sx={{ backgroundColor: '#ffe2c2', width: '100%', padding: '5vh 0', textAlign: 'center' }}>
+        <Box id="locations-desktop" sx={{ backgroundColor: '#ffe2c2', width: '100%', padding: '5vh 0', textAlign: 'center', animation: locationsVisible ? `${slideUp} 1s ease-out` : 'none', opacity: locationsVisible ? 1 : 0 }}>
           <Typography variant='h1' sx={{ fontFamily: 'satisfy', marginBottom: '5vh' }}>Locations</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: '2vw', flexWrap: 'wrap' }}>
             <Card onClick={GoToOriginal} sx={{
@@ -447,6 +541,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
           </Box>
         </Box>
         <Box 
+          id="footer-desktop"
           sx={{ 
             backgroundColor: '#C69209', // Darker shade of the original #F7B60B
             width: "98%",
@@ -458,6 +553,8 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
             position: "relative",
             overflow: "hidden",
             padding: "2rem",
+            animation: footerVisible ? `${fadeIn} 1s ease-out` : 'none',
+            opacity: footerVisible ? 1 : 0,
             "&::before": {
               content: '""',
               position: "absolute",
