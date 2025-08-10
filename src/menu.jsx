@@ -7,56 +7,37 @@ import PageBar from './PageBar';
 const menuItems = {
   'Beef': [
     {
-      name: 'Awaze Tibs',
-      description: 'Sautéed meat (beef or lamb) with onions, peppers, and spices, served with a side of injera.',
-      price: '$23'
+      name: 'Kurt',
+      description: 'Dried and spiced meat, often served as a snack or appetizer.',
+      price: '$21'
     },
     {
       name: 'Chekena Tibs',
-      description: 'Sautéed meat (beef or lamb) with onions, peppers, and spices, served with a side of injera.',
-      price: '$12'
+      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      price: '$21'
     },
     {
       name: 'Goden Tibs',
-      description: 'Sautéed meat (beef or lamb) with onions, peppers, and spices, served with a side of injera.',
-      price: '$14'
+      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      price: '$21'
     },
     {
       name: 'Gas Light Tibs',
-      description: 'Sautéed meat (beef or lamb) with onions, peppers, and spices, served with a side of injera.',
-      price: '$13'
+      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      price: '$21'
     },
     {
-        name: 'Ketfo',
-        description: 'Ethiopian-style minced beef tartare, seasoned with spices and clarified butter.',
-        price: '$24'
-      },
-      {
-        name: 'Kurt',
-        description: 'Dried and spiced meat, often served as a snack or appetizer.',
-        price: '$20'
-      }
+      name: 'Awaze Tibs',
+      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      price: '$21'
+    }
   ],
   'Lamb': [
-    {
-      name: 'lamb Chops',
-      description: 'Traditional Ethiopian sourdough flatbread with a unique, slightly spongy texture.',
-      price: '$13'
-    },
+  
     {
       name: 'lamb Tibs',
-      description: 'Traditional Ethiopian sourdough flatbread with a unique, slightly spongy texture.',
-      price: '$12'
-    },
-    {
-      name: 'lamb kelele',
-      description: 'Traditional Ethiopian sourdough flatbread with a unique, slightly spongy texture.',
-      price: '$15'
-    },
-    {
-      name: 'lamb Tibs',
-      description: 'Traditional Ethiopian sourdough flatbread with a unique, slightly spongy texture.',
-      price: '$13'
+      description: 'Traditional Ethiopian cooked Lamb with spices, served with a side of injera.',
+      price: '$22'
     },
   ]
 };

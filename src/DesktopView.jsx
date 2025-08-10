@@ -214,7 +214,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
           <Box
             sx={{
               position: 'absolute',
-              top: '50%',
+              top: { xs: '50%', sm: '54%', md: '50%', lg: '55%' },
               left: '50%',
               transform: 'translate(-50%, -50%)',
               display: 'flex',
@@ -233,7 +233,7 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
                 backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark semi-transparent background for contrast
                 padding: '20px',
                 borderRadius: '12px',
-                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', lg: '9rem' },
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', lg: '6.5rem' },
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Adding text shadow for depth
                 border: '2px solid #F7B60B', // Adding a border for emphasis
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)', // Adding shadow for a floating effect
@@ -407,10 +407,10 @@ function DesktopView({ GoToOriginal, GoToLakeCity }) {
             <br /><br />
             From our freshly ground coffee beans to our hand-picked spices, every product in our store meets our high standards for quality and authenticity. We believe in supporting local farmers and maintaining the traditional methods that make Ethiopian cuisine special.
           </Typography>
+          <svg viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ position: 'absolute', bottom: -2, left: 0, width: '100%', height: '22%', zIndex: 2, pointerEvents: 'none' }}>
+            <path fill="#F7B60B" fillOpacity="1" d="M0,128L30,144C60,160,120,192,180,202.7C240,213,300,203,360,186.7C420,171,480,149,540,144C600,139,660,149,720,160C780,171,840,181,900,186.7C960,192,1020,192,1080,186.7C1140,181,1200,171,1260,160C1320,149,1380,139,1410,134.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320,840,320,780,320,720,320C660,320,600,320,540,320,480,320,420,320,360,320,300,320,240,320,180,320,120,320,60,320,30,320L0,320Z"></path>
+          </svg>
         </Box>
-        <svg viewBox="0 0 1440 320" style={{ position: 'absolute', bottom: "4%",   marginLeft: '5%', width: '50%', zIndex: 1 }}>
-          <path fill="#F7B60B" fillOpacity="1" d="M0,128L30,144C60,160,120,192,180,202.7C240,213,300,203,360,186.7C420,171,480,149,540,144C600,139,660,149,720,160C780,171,840,181,900,186.7C960,192,1020,192,1080,186.7C1140,181,1200,171,1260,160C1320,149,1380,139,1410,134.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
-        </svg>
       </Box>
       
         <Box id='cuisine' sx={{ animation: isVisible ? `${slideUp} 1s ease-out` : 'none', opacity: isVisible ? 1 : 0 }}>

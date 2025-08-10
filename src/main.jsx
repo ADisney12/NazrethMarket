@@ -10,6 +10,7 @@ import App from "./App";
 import OriginalLocation from "./OriginalLocation.jsx";
 import LakeCityLocation from "./lakeCityLocation";
 import Menu from "./menu";
+import faviconUrl from "./Photos/NazarethMarketlogo.png";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,18 @@ const router = createBrowserRouter([
     element: <Menu/>
   }
 ]);
+
+// Ensure favicon works in production by using Vite's processed asset URL
+(() => {
+  let link = document.querySelector('link[rel="icon"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'icon');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('type', 'image/png');
+  link.setAttribute('href', faviconUrl);
+})();
 
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
