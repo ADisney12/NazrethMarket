@@ -8,37 +8,38 @@ const menuItems = {
   'Beef': [
     {
       name: 'Kurt',
-      description: 'Dried and spiced meat, often served as a snack or appetizer.',
+      description: 'Traditional Ethiopian beef, seasoned with mitmita and niter kibbeh, served raw with injera and awaze.',
       price: '$21'
     },
     {
       name: 'Chekena Tibs',
-      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      description: 'Tender beef sautéed with onions, peppers, and Ethiopian spices, served with fresh injera.',
       price: '$21'
     },
     {
       name: 'Goden Tibs',
-      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      description: 'Crispy, pan-seared beef cubes tossed with onions, peppers, and aromatic herbs, served with injera.',
       price: '$21'
     },
     {
       name: 'Gas Light Tibs',
-      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      description: 'Smoky, spiced beef stir-fried with onions and peppers, paired with soft injera.',
       price: '$21'
     },
     {
       name: 'Awaze Tibs',
-      description: 'Sautéed meat with onions, peppers, and spices, served with a side of injera.',
+      description: 'Beef sautéed in a rich, spicy awaze sauce with onions and peppers, served with injera.',
       price: '$21'
     }
+    
   ],
   'Lamb': [
   
     {
-      name: 'lamb Tibs',
-      description: 'Traditional Ethiopian cooked Lamb with spices, served with a side of injera.',
+      name: 'Lamb Tibs',
+      description: 'Lamb sautéed with Ethiopian spices, onions, and peppers, served with injera.',
       price: '$22'
-    },
+    }
   ]
 };
 
