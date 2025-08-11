@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Analytics } from "@vercel/analytics/react"
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
@@ -44,5 +45,8 @@ const router = createBrowserRouter([
 })();
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <>
+    <RouterProvider router={router} />
+    <Analytics />
+  </>
 );
